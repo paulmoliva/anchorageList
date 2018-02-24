@@ -1,8 +1,10 @@
 import React from 'react';
 
+import CategoriesContainer from './categories/categoriesContainer';
+
 class App extends React.Component {
   render() {
-    return <p>Hello There!</p>;
+    return <CategoriesContainer />;
   }
 }
 

@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-import receiveCategories from '../actions/categoriesActions';
+import receiveCategories from '../actions/categories_actions';
 
-export const fetchCategories = () => dispatch => {
-  return axios.get('/api/categories')
-  .then(() => dispatch(receiveCategories));
+export const fetchCategories = () => {
+  return axios.get('/api/categories');
 };

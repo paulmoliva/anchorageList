@@ -4,7 +4,13 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/configureStore';
 
-const initialState = {};
+const initialState = {
+  categories: {
+    byID: {
+      
+    }
+  }
+};
 
 const store = configureStore(initialState);
 
