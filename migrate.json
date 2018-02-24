@@ -1,0 +1,5 @@
+{
+  "dbConnectionUri": "mongodb://localhost/anchorageList",
+  "migrationsDir": "migrations",
+  "es6": true
+}
