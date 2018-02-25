@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props){
@@ -39,6 +40,9 @@ class LoginForm extends React.Component {
   }
 
   render(){
+    if(this.props.currentUser){
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <form onSubmit={this.postLoginForm}>

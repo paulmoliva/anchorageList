@@ -7,3 +7,7 @@ export const postNewUser = user => {
 export const postUserLogin = user => {
   return axios.post('/api/users/login', user);
 };
+
+export const postUserLogout = user => {
+  return axios.post('/api/users/logout', user);
+};
