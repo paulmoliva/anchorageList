@@ -21,4 +21,17 @@ router.post('/signup', (req, res) => {
   });
 });
 
+router.post('/login',(req, res) => {
+  const userJson = req.body;
+  user.checkPassword(userJson, (success, foundUser) => {
+    if(success) {
+      foundUser.sessionToken = req.session.id;
+      foundUser.save();
+      res.send(foundUser);
+    } else {
+      res.error(401);
+    }
+  });
+});
+
 module.exports = router;

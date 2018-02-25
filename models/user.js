@@ -39,11 +39,36 @@ const saltRounds = 10;
    hashPassword(user, callback);
  };
 
+ const checkPassword = (user, callback) => {
+   User.find({email: user.email}, (err, theUser) => {
+     if(err) callback(false);
+     else {
+       theUser = theUser[0];
+       console.log(user.password);
+       console.log(theUser.passwordDigest);
+       bcrypt.compare(
+         user.password,
+         theUser.passwordDigest
+       ).then(function(res) {
+         if(res) {
+           callback(true, theUser);
+         } else {
+           callback(false);
+         }
+       });
+     }
+   });
+ };
+
  const getUsers = (callback, limit) => {
    User.find(callback).limit(limit);
  };
 
+
+
  module.exports = {
+   User: User,
+   checkPassword: checkPassword,
    createUser: createUser,
    getUsers: getUsers
  };

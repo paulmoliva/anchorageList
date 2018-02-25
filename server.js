@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const categories = require('./routes/categories');
 const users = require('./routes/users');
 
+const UserModel =require('./models/user');
+
 const app = express();
 app.use(bodyParser.json());
 app.use(logger('dev'));
@@ -21,9 +23,49 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
+
+var store = new MongoDBStore(
+  {
+    uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+    collection: 'mySessions'
+  });
+
+// Catch errors
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+
+app.use(require('express-session')({
+  secret: 'This is a secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  // Boilerplate options, see:
+  // * https://www.npmjs.com/package/express-session#resave
+  // * https://www.npmjs.com/package/express-session#saveuninitialized
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use( (req, res, next) => {
+  console.log('Hello ' + JSON.stringify(req.session.id));
+  next();
+});
+
 
 app.get('/', (req, res) => {
-  res.render('index');
+  UserModel.User.find({sessionToken: req.session.id},
+    (err, foundUser) => {
+      console.log(foundUser);
+      let currentUser;
+      if(err) currentUser = null;
+      else currentUser = foundUser[0];
+      res.render('index', {currentUser: currentUser});
+  });
 });
 
 app.use('/api/categories', categories);
@@ -42,7 +84,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err.message);
 
   // render the error page
   res.status(err.status || 500);
