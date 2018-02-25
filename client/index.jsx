@@ -10,7 +10,9 @@ const initialState = {
 
     }
   },
-  session: {}
+  session: {
+    currentUser: window.currentUser
+  }
 };
 
 const store = configureStore(initialState);

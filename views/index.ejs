@@ -8,7 +8,13 @@
     <div id="root"></div>
     <script src="js/bundle.js"></script>
     <script>
-      window.currentUser = <%= currentUser %>
+      <%if (currentUser) { %>
+      window.currentUser = {
+        _id: '<%- currentUser.id %>',
+        email: '<%- currentUser.email %>',
+        sessionToken: '<%- currentUser.sessionToken %>'
+      }
+      <% } %>
     </script>
   </body>
 </html>

@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema({
   sessionToken: {
     type: String,
     required: false
+  },
+  admin: {
+    type: Boolean,
+    required: false
   }
 });
 
@@ -28,7 +32,7 @@ const saltRounds = 10;
      if (err) throw err;
      newUser.passwordDigest = hash;
      newUser.save( (err2, savedUser) => {
-       if (err2) throw err2;
+       if (err2) callback(err2);
        callback(err, newUser);
      });
    });

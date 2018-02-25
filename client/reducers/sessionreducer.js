@@ -4,7 +4,7 @@ const sessionReducer = (state = {}, action) => {
   switch(action.type){
     case RECEIVE_CURRENT_USER:
       const currentUser = action.payload.data;
-      return currentUser;
+      return {currentUser:currentUser};
     default:
       return state;
   }

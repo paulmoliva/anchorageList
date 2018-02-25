@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { receiveCurrentUser } from '../../actions/sessionActions';
+import { receiveCurrentUser, createUser } from '../../actions/sessionActions';
 import SignUpForm from './SignUpForm';
 
 const mapStateToProps = state => ({
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  receiveCurrentUser: user => dispatch(receiveCurrentUser(user))
+  receiveCurrentUser: user => dispatch(receiveCurrentUser(user)),
+  createUser: user => dispatch(createUser(user))
 });
 
 const SignupContainer = connect(

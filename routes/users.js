@@ -15,8 +15,12 @@ router.post('/signup', (req, res) => {
   const userJSON = req.body;
   user.createUser(userJSON, (err, newUser) =>{
     if(err){
-      throw err;
+      res.status(500).send(
+        {error: 'Email already taken or other error occurred'}
+      );
     }
+    newUser.sessionToken = req.session.id;
+    newUser.save();
     res.send(newUser);
   });
 });

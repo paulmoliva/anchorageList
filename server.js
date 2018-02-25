@@ -71,12 +71,15 @@ app.get('/', (req, res) => {
 app.use('/api/categories', categories);
 app.use('/api/users', users);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  res.render('index');
-  // next(err);
+app.get('/*', function(req, res) {
+  UserModel.User.find({sessionToken: req.session.id},
+    (err, foundUser) => {
+      console.log(foundUser);
+      let currentUser;
+      if(err) currentUser = null;
+      else currentUser = foundUser[0];
+      res.render('index', {currentUser: currentUser});
+  });
 });
 
 // error handler
