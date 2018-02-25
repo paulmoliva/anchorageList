@@ -5,6 +5,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 
 const categories = require('./routes/categories');
+const users = require('./routes/users');
 
 const app = express();
 app.use(bodyParser.json());
@@ -25,5 +26,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/categories', categories);
+app.use('/api/users', users);
 
 app.listen(3000);
