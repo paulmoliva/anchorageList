@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import {requestAllCategories} from '../../actions/categories_actions';
+import { allCategories } from '../../selectors/categoriesSelectors';
 import CategoriesIndex from './categoriesIndex';
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: allCategories(state.categories.byID)
 });
 
 const mapDispatchToProps = dispatch => ({

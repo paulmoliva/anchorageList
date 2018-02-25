@@ -7,9 +7,10 @@ import configureStore from './store/configureStore';
 const initialState = {
   categories: {
     byID: {
-      
+
     }
-  }
+  },
+  session: {}
 };
 
 const store = configureStore(initialState);

@@ -7,9 +7,8 @@ class CategoriesIndex extends React.Component {
 
   render() {
     let { categories } = this.props;
-    const allIDs = Object.keys(categories.byID);
-    const categoriesList = allIDs.map( (id, idx) => {
-      return <li key={idx}>{categories.byID[id].name}</li>;
+    const categoriesList = categories.map( (category, idx) => {
+      return <li key={idx}>{category.name}</li>;
     });
     return (
       <ul>
