@@ -25,10 +25,12 @@ const saltRounds = 10;
    let newUser = new User();
    newUser.email = user.email;
    bcrypt.hash(user.password, saltRounds, function(err, hash) {
-     
+     if (err) throw err;
      newUser.passwordDigest = hash;
-     newUser.save();
-     callback(err, newUser);
+     newUser.save( (err2, savedUser) => {
+       if (err2) throw err2;
+       callback(err, newUser);
+     });
    });
    return newUser;
  };

@@ -8,4 +8,9 @@ class SignUpForm extends React.Component {
       passwordInput: ''
     };
   }
+  render(){
+    return <p>Signup form</p>;
+  }
 }
+
+export default SignUpForm;
