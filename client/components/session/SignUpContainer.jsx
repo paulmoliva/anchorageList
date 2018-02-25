@@ -4,7 +4,7 @@ import { receiveCurrentUser, createUser } from '../../actions/sessionActions';
 import SignUpForm from './SignUpForm';
 
 const mapStateToProps = state => ({
-  currentUser: state.session
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

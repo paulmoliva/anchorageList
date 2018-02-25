@@ -1,4 +1,4 @@
-import RECEIVE_CURRENT_USER from '../actions/sessionActions';
+import {RECEIVE_CURRENT_USER} from '../actions/sessionActions';
 
 const sessionReducer = (state = {}, action) => {
   switch(action.type){

@@ -33,7 +33,7 @@ router.post('/login',(req, res) => {
       foundUser.save();
       res.send(foundUser);
     } else {
-      res.error(401);
+      res.status(401).send({error: 'Invalid Credentials'});
     }
   });
 });

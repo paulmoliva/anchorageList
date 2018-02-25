@@ -1,5 +1,5 @@
 const CREATE_USER = 'CREATE_USER';
-const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 const LOGIN_USER = 'LOGIN_USER';
 
 import { postNewUser, postUserLogin } from '../util/session_api_util';

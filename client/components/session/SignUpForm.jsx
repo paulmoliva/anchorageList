@@ -17,6 +17,12 @@ class SignUpForm extends React.Component {
     this.postSignupForm = this.postSignupForm.bind(this);
   }
 
+  componentWillMount(){
+    if(this.props.currentUser){
+      this.props.history.push('/');
+    }
+  }
+
   handleEmailChange(e){
     this.setState({
       emailInput: e.target.value

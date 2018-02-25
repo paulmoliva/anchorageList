@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const navBar = ({currentUser}) => {
   if(currentUser) {
     return (
-      <p>Hello {currentUser.userName}</p>
+      <p>Hello {currentUser.email}</p>
     );
   } else {
     return (
