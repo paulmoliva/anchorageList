@@ -6,22 +6,34 @@ import { logoutUser } from '../actions/sessionActions';
 const navBar = ({currentUser, logoutUser}) => {
   if(currentUser) {
     return (
-      <div>
-        <p>Hello {currentUser.email}</p>
-        <a
-          href="#"
-          onClick={() => {
-            logoutUser(currentUser);
-          }}
-        >Logout</a>
-      </div>
+      <nav>
+        <div>
+          <h3><Link to="/">AnchorageList</Link></h3>
+        </div>
+        <div>
+          <p>Hello, {currentUser.email} | </p>
+          <a
+            href="#"
+            onClick={() => {
+              logoutUser(currentUser);
+            }}
+          >Logout</a>
+        </div>
+      </nav>
+
     );
   } else {
     return (
-      <div>
-        <Link to="/login">Log In</Link> |
-        <Link to="/signup">Sign Up</Link>
-      </div>
+      <nav>
+        <div>
+          <h3><Link to="/">AnchorageList</Link></h3>
+        </div>
+        <div>
+          <Link to="/login">Log In</Link>
+          <p> | </p>
+          <Link to="/signup">Sign Up</Link>
+        </div>
+      </nav>
     );
   }
 };

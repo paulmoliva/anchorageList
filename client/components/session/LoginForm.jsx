@@ -44,17 +44,23 @@ class LoginForm extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
-        <form onSubmit={this.postLoginForm}>
+      <div className="login-container">
+        <form
+          onSubmit={this.postLoginForm}
+          className="login-form"
+        >
+          <h3>AnchorageList</h3>
           <input
             type="text"
             onChange={this.handleEmailChange}
             placeholder="Email"
+            autoComplete="off"
           />
           <input
             type="password"
             onChange={this.handlePasswordChange}
             placeholder="Password"
+            autoComplete="off"
           />
           <input type="submit" value="Log In"/>
         </form>

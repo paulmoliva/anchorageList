@@ -69,22 +69,32 @@ class SignUpForm extends React.Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
-        <input type="email" onChange={this.handleEmailChange} />
-        <input
-          type="password"
-          onChange={this.handlePasswordChange}
-          placeholder="Password"
+      <div className="login-container">
+        <form
+          className="login-form"
+          onSubmit={this.postSignupForm}
+        >
+          <h3>Sign up</h3>
+          <input
+            type="email"
+            onChange={this.handleEmailChange}
+            placeholder="Email"
           />
-        <input
-          type="password"
-          onChange={this.handlePasswordConfirmationChange}
-          placeholder="Confirm Password"
-          />
-        <ul>
-          {this.errorText()}
-        </ul>
-        <button onClick={this.postSignupForm}>Sign Up</button>
+          <input
+            type="password"
+            onChange={this.handlePasswordChange}
+            placeholder="Password"
+            />
+          <input
+            type="password"
+            onChange={this.handlePasswordConfirmationChange}
+            placeholder="Confirm Password"
+            />
+          <ul>
+            {this.errorText()}
+          </ul>
+          <input type="submit" value="Sign Up" />
+        </form>
       </div>
     );
   }
