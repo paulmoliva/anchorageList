@@ -28,6 +28,11 @@ export const receiveCategories = categories => ({
   payload: categories
 });
 
+export const receiveSubcategories = categories => ({
+  type: RECEIVE_CATEGORIES,
+  payload: categories
+});
+
 export const receiveSingleCategory = category => ({
   type: RECEIVE_SINGLE_CATEGORY,
   payload: category

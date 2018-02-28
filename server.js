@@ -5,6 +5,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 
 const categories = require('./routes/categories');
+const subcategories = require('./routes/subcategories');
 const users = require('./routes/users');
 
 const UserModel =require('./models/user');
@@ -69,6 +70,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/categories', categories);
+app.use('/api/subcategories', subcategories);
 app.use('/api/users', users);
 
 app.get('/*', function(req, res) {
